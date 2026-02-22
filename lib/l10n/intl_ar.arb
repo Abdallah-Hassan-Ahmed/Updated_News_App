@@ -1,0 +1,33 @@
+{
+    "business": "أعمال",
+    "entertainment": "ترفيه",
+    "general": "عام",
+    "health": "صحة",
+    "science": "علوم",
+    "sport": "رياضة",
+    "technology": "تكنولوجيا",
+
+    "home": "الرئيسية",
+
+    "good_morning": "صباح الخير",
+    "good_afternoon": "مساء الخير",
+    "good_evening": "مساء الخير",
+
+    "news_for_you": "إليك بعض الأخبار",
+    "news_app": "تطبيق الأخبار",
+
+    "go_to_home": "الذهاب إلى الرئيسية",
+
+    "theme": "المظهر",
+    "dark": "داكن",
+    "light": "فاتح",
+
+    "language": "اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+
+    "view_all": "عرض الكل",
+    "view_full_article": "عرض الخبر كاملًا",
+
+    "search": "بحث"
+}
