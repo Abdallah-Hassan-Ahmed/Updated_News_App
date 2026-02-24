@@ -11,8 +11,8 @@ class AppFont {
     fontWeight: FontWeight.w700,
   );
   static final TextStyle bold20White = TextStyle(
-    color: _darkModeColor,
-    fontSize: 24,
+    color: _lightModeColor,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
   );
 
@@ -37,7 +37,7 @@ class AppFont {
 
   static final TextStyle semi14Black = TextStyle(
     color: _darkModeColor,
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: FontWeight.w700,
   );
 
@@ -62,7 +62,7 @@ class AppFont {
 
   static final TextStyle semi14White = TextStyle(
     color: _lightModeColor,
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: FontWeight.w700,
   );
 

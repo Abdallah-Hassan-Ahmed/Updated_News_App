@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
   final Color iconColor;
   final double iconSize;
   final double spacing;
-  final bool isLoading ;
+  final bool isLoading;
 
   final ButtonContentAlignment contentAlignment;
 
@@ -38,29 +38,30 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: bgColor ?? AppColor.grayColor,
+          backgroundColor: bgColor ?? AppColor.transparent,
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(16),
             side: BorderSide(
-              color: borderColor ?? AppColor.grayColor,
+              color: borderColor ?? AppColor.bgLight,
               width: 1.5,
             ),
           ),
         ),
-        child:isLoading? SizedBox(
-          width: 20,
-          height: 20,
-          child: CircularProgressIndicator(color: AppColor.grayColor,)):Align(alignment: _getAlignment(), child: _buildContent()),
+        child: isLoading
+            ? SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(color: AppColor.grayColor),
+              )
+            : Align(alignment: _getAlignment(), child: _buildContent()),
       ),
     );
   }
-
 
   Alignment _getAlignment() {
     switch (contentAlignment) {
@@ -81,10 +82,11 @@ class CustomButton extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        Text(text, style: textStyle ?? AppFont.bold16Black),
+        Spacer(),
+        SizedBox(width: spacing),
         if (icon != null) icon!,
         if (icon == null) SizedBox(width: spacing),
-        SizedBox(width: spacing),
-        Text(text, style: textStyle ??  AppFont.bold16Black),
       ],
     );
   }

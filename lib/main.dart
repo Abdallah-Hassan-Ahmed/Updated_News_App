@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:news_app/config/language/localization_provider.dart';
+import 'package:news_app/config/routes/app_routes.dart';
 import 'package:news_app/config/theme/theme_provider.dart';
 import 'package:news_app/config/theme/themes_app.dart';
 import 'package:news_app/core/extension/extensions.dart';
+import 'package:news_app/feature/home/presentation/view/home_view.dart';
 import 'package:news_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +26,9 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        var localProvider = Provider.of<LocalizationProvider>(context);
+        var themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -33,25 +38,13 @@ class NewsApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: Locale(context.localProvider.localeState),
+      locale: Locale(localProvider.localeState),
       theme: ThemesApp.lightThemeData,
       darkTheme: ThemesApp.darkThemeData,
-      themeMode:context.themeProvider.themeMode ,
-
-      home: const HomeView(),
+      themeMode:themeProvider.themeMode ,
+      initialRoute: AppRoutes.home,
+      routes: AppRoutes.routes,
     );
   }
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(S.current.home , style: TextStyle(color: Color(0xffFFFFFF)),), // ✅ مضمون
-      ),
-    );
-  }
-}

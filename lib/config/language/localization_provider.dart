@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LocalizationProvider extends ChangeNotifier {
-  String localeState = "ar";
+  String localeState = "en";
 
   void changeLang(String newLocale) {
     if (localeState == newLocale) return;

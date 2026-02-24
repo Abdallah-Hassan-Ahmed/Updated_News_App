@@ -2,14 +2,15 @@ class AppImages {
   // Base paths
   static const String _imagesPath = 'assets/images/';
   static const String _logoPath = 'assets/logo/';
+  static const String _iconPath = 'assets/icons/';
 
   // Logo
   static const String logoDark = '${_logoPath}logo.png';
   static const String logoLight = '${_logoPath}LogoLight.png';
 
   // Business
-  static const String business = '${_imagesPath}business.png';
-  static const String businessDark = '${_imagesPath}business_dark.png';
+  static const String business = '${_imagesPath}busniess.png';
+  static const String businessDark = '${_imagesPath}busniess_dark.png';
 
   // Entertainment
   static const String entertainment = '${_imagesPath}entertainment.png';
@@ -34,4 +35,10 @@ class AppImages {
   // Technology
   static const String technology = '${_imagesPath}technology.png';
   static const String technologyDark = '${_imagesPath}technology_dark.png';
+
+  // drawer icons
+    static const String homeIcon = '${_iconPath}homeIcon.png';
+    static const String langIcon = '${_iconPath}languageIcon.png';
+    static const String themeIcon = '${_iconPath}themIcon.png';
+
 }
