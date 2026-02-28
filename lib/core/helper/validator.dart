@@ -18,13 +18,15 @@ class Validators {
   // Validate Password
   static String? isPassword(String? value, {int minLength = 6}) {
     if (value == null || value.trim().isEmpty) return "Password is required";
-    if (value.length < minLength) return "Password must be at least $minLength characters";
+    if (value.length < minLength)
+      return "Password must be at least $minLength characters";
     return null;
   }
 
   // Confirm Password
   static String? confirmPassword(String? value, String? original) {
-    if (value == null || value.trim().isEmpty) return "Confirm password is required";
+    if (value == null || value.trim().isEmpty)
+      return "Confirm password is required";
     if (value != original) return "Passwords do not match";
     return null;
   }
@@ -38,14 +40,24 @@ class Validators {
   }
 
   // Validate Text Length
-  static String? minLength(String? value, int length, {String field = "Field"}) {
+  static String? minLength(
+    String? value,
+    int length, {
+    String field = "Field",
+  }) {
     if (value == null || value.trim().isEmpty) return "$field is required";
-    if (value.trim().length < length) return "$field must be at least $length characters";
+    if (value.trim().length < length)
+      return "$field must be at least $length characters";
     return null;
   }
 
-  static String? maxLength(String? value, int length, {String field = "Field"}) {
-    if (value != null && value.trim().length > length) return "$field must not exceed $length characters";
+  static String? maxLength(
+    String? value,
+    int length, {
+    String field = "Field",
+  }) {
+    if (value != null && value.trim().length > length)
+      return "$field must not exceed $length characters";
     return null;
   }
 }

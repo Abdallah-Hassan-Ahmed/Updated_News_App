@@ -15,6 +15,11 @@ class AppFont {
     fontSize: 20,
     fontWeight: FontWeight.w700,
   );
+  static final TextStyle semi12Gray = TextStyle(
+    color: AppColor.grayColor,
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+  );
 
   // light mode
   static final TextStyle semi20Black = TextStyle(
@@ -42,7 +47,7 @@ class AppFont {
   );
 
   // dark mode
-    static final TextStyle semi20White = TextStyle(
+  static final TextStyle semi20White = TextStyle(
     color: _lightModeColor,
     fontSize: 20,
     fontWeight: FontWeight.w500,
@@ -65,5 +70,4 @@ class AppFont {
     fontSize: 14,
     fontWeight: FontWeight.w700,
   );
-
 }

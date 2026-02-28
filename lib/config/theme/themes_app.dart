@@ -15,11 +15,15 @@ class ThemesApp {
       titleMedium: AppFont.semi20Black,
       bodyMedium: AppFont.semi20Black,
       labelMedium: AppFont.semi24White,
+      headlineMedium: AppFont.bold16Black,
+      headlineSmall: AppFont.semi14Black,
+      bodySmall:AppFont.semi14White 
     ),
   );
 
   static ThemeData darkThemeData = ThemeData(
     scaffoldBackgroundColor: AppColor.bgDark,
+
     colorScheme: ColorScheme.dark(
       onPrimary: AppColor.bgDark,
       onSecondary: AppColor.bgLight,
@@ -30,6 +34,9 @@ class ThemesApp {
       titleMedium: AppFont.semi20White,
       bodyMedium: AppFont.semi20White,
       labelMedium: AppFont.semi24Black,
+      headlineMedium: AppFont.bold16White,
+      headlineSmall: AppFont.semi14White,
+      bodySmall:AppFont.semi14Black
     ),
   );
 }

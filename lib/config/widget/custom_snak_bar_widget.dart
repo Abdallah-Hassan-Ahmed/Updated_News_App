@@ -6,9 +6,11 @@ class CustomSnakBarWidget {
     ScaffoldMessenger.of(context!).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
-        margin: EdgeInsets.all(context.height*0.02),
-        padding:EdgeInsets.all(context.height*0.02) ,
-        backgroundColor: color, content: Text(text)),
+        margin: EdgeInsets.all(context.height * 0.02),
+        padding: EdgeInsets.all(context.height * 0.02),
+        backgroundColor: color,
+        content: Text(text),
+      ),
     );
   }
 }

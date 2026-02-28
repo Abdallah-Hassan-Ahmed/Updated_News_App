@@ -40,11 +40,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "news_app": MessageLookupByLibrary.simpleMessage("تطبيق الأخبار"),
         "news_for_you":
             MessageLookupByLibrary.simpleMessage("إليك بعض الأخبار"),
+        "no_data_found": MessageLookupByLibrary.simpleMessage("لا يوجد اخبار"),
         "science": MessageLookupByLibrary.simpleMessage("علوم"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "server_error": MessageLookupByLibrary.simpleMessage("خطأ بالسيرفر "),
+        "server_error_user":
+            MessageLookupByLibrary.simpleMessage("يوجد خطأ ما حدث"),
         "sport": MessageLookupByLibrary.simpleMessage("رياضة"),
         "technology": MessageLookupByLibrary.simpleMessage("تكنولوجيا"),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+        "try_again": MessageLookupByLibrary.simpleMessage("حاول مره اخري"),
         "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
         "view_full_article":
             MessageLookupByLibrary.simpleMessage("عرض الخبر كاملًا")

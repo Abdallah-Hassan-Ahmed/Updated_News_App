@@ -40,11 +40,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "news_app": MessageLookupByLibrary.simpleMessage("News App"),
         "news_for_you":
             MessageLookupByLibrary.simpleMessage("Here is some news for you"),
+        "no_data_found": MessageLookupByLibrary.simpleMessage("No data found"),
         "science": MessageLookupByLibrary.simpleMessage("Science"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "server_error":
+            MessageLookupByLibrary.simpleMessage("Server error !!!"),
+        "server_error_user":
+            MessageLookupByLibrary.simpleMessage("There is something wrong"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "technology": MessageLookupByLibrary.simpleMessage("Technology"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "try_again": MessageLookupByLibrary.simpleMessage("Try again"),
         "view_all": MessageLookupByLibrary.simpleMessage("View All"),
         "view_full_article":
             MessageLookupByLibrary.simpleMessage("View Full Article")

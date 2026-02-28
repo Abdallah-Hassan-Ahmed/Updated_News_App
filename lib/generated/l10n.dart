@@ -279,6 +279,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Server error !!!`
+  String get server_error {
+    return Intl.message(
+      'Server error !!!',
+      name: 'server_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is something wrong`
+  String get server_error_user {
+    return Intl.message(
+      'There is something wrong',
+      name: 'server_error_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get try_again {
+    return Intl.message(
+      'Try again',
+      name: 'try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data found`
+  String get no_data_found {
+    return Intl.message(
+      'No data found',
+      name: 'no_data_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

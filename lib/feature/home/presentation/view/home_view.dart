@@ -5,21 +5,43 @@ import 'package:news_app/feature/home/presentation/widget/drawer_widget.dart';
 import 'package:news_app/feature/home/presentation/widget/list_news_category.dart';
 import 'package:news_app/generated/l10n.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   HomeView({super.key});
 
   static const String routeName = 'home_view';
-  List<String> times = [
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final List<String> times = [
     S.current.good_morning,
     S.current.good_afternoon,
     S.current.good_evening,
   ];
 
+  bool isSearch = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerWidget(),
-      appBar: AppBarWidget(text: S.of(context).home),
+      appBar: AppBarWidget(
+        text: S.of(context).home,
+        isSearch: isSearch,
+        controller: TextEditingController(),
+        onPressed2: () {
+          setState(() {
+            isSearch = !isSearch;
+          });
+        },
+        onPressed: () {
+          setState(() {
+            isSearch = !isSearch;
+          });
+        },
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: context.height * 0.025,
@@ -35,6 +57,7 @@ class HomeView extends StatelessWidget {
                 S.of(context).news_for_you,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
+              SizedBox(height: context.height * 0.02),
               NewsCategoryList(),
             ],
           ),

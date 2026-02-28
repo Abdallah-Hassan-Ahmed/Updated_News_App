@@ -17,13 +17,8 @@ extension ThemeExtension on BuildContext {
 }
 
 extension NavigationExtension on BuildContext {
-
   Future<T?> pushNamed<T>(String routeName, {Object? arguments}) {
-    return Navigator.pushNamed<T>(
-      this,
-      routeName,
-      arguments: arguments,
-    );
+    return Navigator.pushNamed<T>(this, routeName, arguments: arguments);
   }
 
   Future<T?> pushReplacementNamed<T>(String routeName, {Object? arguments}) {
@@ -41,7 +36,6 @@ extension NavigationExtension on BuildContext {
       (route) => false,
     );
   }
-
 
   void pop<T extends Object?>([T? result]) {
     Navigator.pop(this, result);

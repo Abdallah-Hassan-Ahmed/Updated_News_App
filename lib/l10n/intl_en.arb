@@ -29,5 +29,10 @@
     "view_all": "View All",
     "view_full_article": "View Full Article",
 
-    "search": "Search"
+    "search": "Search",
+
+    "server_error":"Server error !!!",
+    "server_error_user":"There is something wrong",
+    "try_again":"Try again",
+    "no_data_found":"No data found"
 }

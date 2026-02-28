@@ -14,8 +14,8 @@ class CardContentItem extends StatelessWidget {
   final String text;
   final String imagePath;
   final int num;
-  late bool isRight = num % 2 == 0;
-  void Function() onTap;
+  late final bool isRight = num % 2 == 0;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:news_app/core/extension/extensions.dart';
 import 'package:news_app/core/utils/app_color.dart';
 import 'package:news_app/core/utils/app_font_styles.dart';
 
@@ -32,14 +32,16 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxLine ?? 1,
       onChanged: onChange,
       validator: validator,
-      cursorColor: AppColor.bgLight,
+      cursorColor: Theme.of(context).colorScheme.onSecondary,
       obscureText: obscureText,
       controller: controller,
-      
+
       style:
           textStyle ??
           Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 16),
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.all(context.height * 0.02),
+
         errorStyle: AppFont.bold16Black.copyWith(color: AppColor.grayColor),
         suffixIcon: suffixIcons,
         prefixIcon: prefixIcon,
@@ -51,13 +53,16 @@ class CustomTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).colorScheme.onSecondary,
             width: 1.2,
           ),
           borderRadius: BorderRadius.circular(16),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColor.bgLight, width: 2),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.onSecondary,
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         errorBorder: OutlineInputBorder(
@@ -66,6 +71,13 @@ class CustomTextField extends StatelessWidget {
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColor.grayColor, width: 2),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.onSecondary,
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
       ),

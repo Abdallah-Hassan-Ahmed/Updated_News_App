@@ -4,8 +4,6 @@ import 'package:news_app/config/language/localization_provider.dart';
 import 'package:news_app/config/routes/app_routes.dart';
 import 'package:news_app/config/theme/theme_provider.dart';
 import 'package:news_app/config/theme/themes_app.dart';
-import 'package:news_app/core/extension/extensions.dart';
-import 'package:news_app/feature/home/presentation/view/home_view.dart';
 import 'package:news_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +24,8 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        var localProvider = Provider.of<LocalizationProvider>(context);
-        var themeProvider = Provider.of<ThemeProvider>(context);
+    var localProvider = Provider.of<LocalizationProvider>(context);
+    var themeProvider = Provider.of<ThemeProvider>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -41,10 +39,9 @@ class NewsApp extends StatelessWidget {
       locale: Locale(localProvider.localeState),
       theme: ThemesApp.lightThemeData,
       darkTheme: ThemesApp.darkThemeData,
-      themeMode:themeProvider.themeMode ,
+      themeMode: themeProvider.themeMode,
       initialRoute: AppRoutes.home,
       routes: AppRoutes.routes,
     );
   }
 }
-

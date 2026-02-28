@@ -14,7 +14,8 @@ class AppImages {
 
   // Entertainment
   static const String entertainment = '${_imagesPath}entertainment.png';
-  static const String entertainmentDark = '${_imagesPath}entertainment_dark.png';
+  static const String entertainmentDark =
+      '${_imagesPath}entertainment_dark.png';
 
   // General
   static const String general = '${_imagesPath}general.png';
@@ -37,8 +38,7 @@ class AppImages {
   static const String technologyDark = '${_imagesPath}technology_dark.png';
 
   // drawer icons
-    static const String homeIcon = '${_iconPath}homeIcon.png';
-    static const String langIcon = '${_iconPath}languageIcon.png';
-    static const String themeIcon = '${_iconPath}themIcon.png';
-
+  static const String homeIcon = '${_iconPath}homeIcon.png';
+  static const String langIcon = '${_iconPath}languageIcon.png';
+  static const String themeIcon = '${_iconPath}themIcon.png';
 }

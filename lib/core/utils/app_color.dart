@@ -10,5 +10,4 @@ class AppColor {
   // common
   static Color grayColor = Color(0xff808080);
   static Color transparent = Colors.transparent;
-
 }
