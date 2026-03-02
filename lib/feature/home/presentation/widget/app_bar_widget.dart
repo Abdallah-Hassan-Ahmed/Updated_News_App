@@ -5,19 +5,21 @@ import 'package:news_app/core/utils/app_color.dart';
 import 'package:news_app/generated/l10n.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({
+  AppBarWidget({
     super.key,
     required this.text,
     this.onPressed,
     this.isSearch = true,
     required this.controller,
     this.onPressed2,
+    this.onChange,
   });
   final String text;
   final void Function()? onPressed;
   final void Function()? onPressed2;
   final bool isSearch;
   final TextEditingController controller;
+  Function(String)? onChange;
 
   @override
   Size get preferredSize =>
@@ -41,6 +43,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             padding: EdgeInsets.all(context.height * 0.015),
             child: SafeArea(
               child: CustomTextField(
+                onChange: onChange,
                 controller: controller,
                 hint: S.of(context).search,
                 prefixIcon: Icon(

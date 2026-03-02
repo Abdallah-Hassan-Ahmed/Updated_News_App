@@ -17,14 +17,15 @@ class CategoryView extends StatefulWidget {
 }
 
 class _CategoryViewState extends State<CategoryView> {
-  Future<NewsResponseTabs>? _newsFuture;
+  late Future<NewsResponseTabs> _newsFuture;
   String? categoryId;
   String? categoryTitle;
+  bool isSearch = true;
+  TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final args =
           ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
@@ -33,52 +34,44 @@ class _CategoryViewState extends State<CategoryView> {
       categoryTitle = args['title'];
 
       _newsFuture = NewsApiManager.getResponse(categoryId!);
-
       setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    /// لسه البيانات مجتش
-    if (categoryTitle == null || _newsFuture == null) {
-      return Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(
-            color: Theme.of(context).colorScheme.onSecondary,
-          ),
-        ),
-      );
+    if (categoryTitle == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
       drawer: DrawerWidget(),
-      appBar: AppBarWidget(text: categoryTitle! , controller: TextEditingController() , onPressed: () {
-        
-      },),
+      appBar: AppBarWidget(
+        text: categoryTitle!,
+        isSearch: isSearch,
+        controller: controller,
+        onChange: (value) {
+          setState(() {}); // بس عشان يبعت text جديد
+        },
+        onPressed: () {
+          setState(() {
+            isSearch = !isSearch;
+          });
+        },
+        onPressed2: () {
+          setState(() {
+            isSearch = !isSearch;
+          });
+        },
+      ),
       body: FutureBuilder<NewsResponseTabs>(
         future: _newsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(
-                color: Theme.of(context).colorScheme.onSecondary,
-              ),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
 
-          if (snapshot.hasError) {
-            return ErrorsWidget(
-              title: S.of(context).server_error_user,
-              onPressed: () {
-                setState(() {
-                  _newsFuture = NewsApiManager.getResponse(categoryId!);
-                });
-              },
-            );
-          }
-
-          if (snapshot.data?.status != "ok") {
+          if (snapshot.hasError || snapshot.data?.status != "ok") {
             return ErrorsWidget(
               title: S.of(context).server_error,
               onPressed: () {
@@ -89,7 +82,11 @@ class _CategoryViewState extends State<CategoryView> {
             );
           }
 
-          return ItemTabs(sourcesList: snapshot.data?.sources ?? []);
+          return ItemTabs(
+            sourcesList: snapshot.data!.sources ?? [],
+            isSearch: isSearch,
+            text: controller.text,
+          );
         },
       ),
     );

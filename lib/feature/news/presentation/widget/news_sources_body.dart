@@ -7,9 +7,16 @@ import 'package:news_app/feature/news/presentation/widget/news_card_widget.dart'
 import 'package:news_app/generated/l10n.dart';
 
 class NewsSourcesBody extends StatefulWidget {
-  const NewsSourcesBody({super.key, required this.source});
+  const NewsSourcesBody({
+    super.key,
+    required this.source,
+    required this.isSearch,
+    required this.text,
+  });
 
   final Sources source;
+  final bool isSearch;
+  final String text;
 
   @override
   State<NewsSourcesBody> createState() => _NewsSourcesBodyState();
@@ -21,43 +28,45 @@ class _NewsSourcesBodyState extends State<NewsSourcesBody> {
   @override
   void initState() {
     super.initState();
-    _newsFuture =
-        NewsApiManager.getNewsBySources(widget.source.id ?? '');
+    _loadData();
+  }
+
+  void _loadData() {
+    final String query =
+      widget.text.trim().isEmpty ? "news" : widget.text.trim();
+    _newsFuture = widget.isSearch
+        ? NewsApiManager.getNewsBySources(widget.source.id ?? '')
+        :NewsApiManager.search(query) ;
   }
 
   @override
+  void didUpdateWidget(covariant NewsSourcesBody oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
+    if (oldWidget.text != widget.text ||
+        oldWidget.isSearch != widget.isSearch ||
+        oldWidget.source.id != widget.source.id) {
+      setState(() {
+        _loadData();
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponseBySource>(
       future: _newsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
 
-        if (snapshot.hasError) {
+        if (snapshot.hasError || snapshot.data?.status != "ok") {
           return ErrorsWidget(
             title: S.of(context).server_error_user,
             onPressed: () {
               setState(() {
-                _newsFuture = NewsApiManager.getNewsBySources(
-                    widget.source.id ?? '');
-              });
-            },
-          );
-        }
-
-        if (snapshot.data?.status != "ok") {
-          return ErrorsWidget(
-            title: S.of(context).server_error,
-            onPressed: () {
-              setState(() {
-                _newsFuture = NewsApiManager.getNewsBySources(
-                    widget.source.id ?? '');
+                _loadData();
               });
             },
           );
@@ -68,7 +77,7 @@ class _NewsSourcesBodyState extends State<NewsSourcesBody> {
         if (listItem.isEmpty) {
           return Center(
             child: Text(
-              S.of(context).no_data_found,
+              "S.of(context).no_data_found,",
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           );

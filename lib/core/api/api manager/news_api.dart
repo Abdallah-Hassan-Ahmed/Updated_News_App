@@ -40,4 +40,22 @@ class NewsApiManager {
       throw e;
     }
   }
+
+  // todo: search 
+static Future<NewsResponseBySource> search(String q) async {
+    Uri url = Uri.https(ApiConstant.serverName, NewsEndPoint.newsBodySource, {
+      "apiKey": ApiConstant.apiKey2,
+      "q": q,
+    });
+    try {
+      var response = await http.get(url);
+      var bodyString = response.body;
+      var json = jsonDecode(bodyString);
+      print(json);
+      return NewsResponseBySource.fromJson(json);
+    } catch (e) {
+      print(e.toString());
+      throw e;
+    }
+  }
 }

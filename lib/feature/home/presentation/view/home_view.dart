@@ -6,7 +6,7 @@ import 'package:news_app/feature/home/presentation/widget/list_news_category.dar
 import 'package:news_app/generated/l10n.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({super.key});
+const  HomeView({super.key});
 
   static const String routeName = 'home_view';
 
@@ -22,6 +22,21 @@ class _HomeViewState extends State<HomeView> {
   ];
 
   bool isSearch = true;
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBarWidget(
         text: S.of(context).home,
         isSearch: isSearch,
-        controller: TextEditingController(),
+        controller: controller,
         onPressed2: () {
           setState(() {
             isSearch = !isSearch;
@@ -58,7 +73,7 @@ class _HomeViewState extends State<HomeView> {
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: context.height * 0.02),
-              NewsCategoryList(),
+              NewsCategoryList(searchText: controller.text),
             ],
           ),
         ),
